@@ -1,1 +1,7 @@
 /.vscode
+/.cogni
+/Calibration_Data
+/cifar-10-batches-py
+/simulation_results
+/mems_int8
+/__pycache__

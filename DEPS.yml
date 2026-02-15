@@ -1,0 +1,36 @@
+# DEPS.yml - Dependency configuration for MAC unit simulation
+# This file defines the simulation targets for the MobileNetV2 accelerator project
+
+# MAC Unit Testbench Simulation
+sim_mac_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - tb_mac_uint8_int32.sv
+  top: tb_mac_uint8_int32
+
+# Depthwise Convolution 3x3 Engine Testbench Simulation
+sim_depthwise_conv_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - tb_depthwise_conv3x3_engine.sv
+  top: tb_depthwise_conv3x3_engine
+
+# Pointwise Convolution 1x1 Engine Testbench Simulation
+sim_pointwise_conv_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_pointwise_conv1x1_engine.sv
+  top: tb_pointwise_conv1x1_engine
+
+# Inverted Residual Block Integration Testbench Simulation
+sim_inverted_residual_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - pointwise_conv1x1_engine.sv
+    - relu6_quantized.sv
+    - inverted_residual_block.sv
+    - tb_inverted_residual_block.sv
+  top: tb_inverted_residual_block
