@@ -7,6 +7,8 @@ from onnxruntime.quantization import quantize_static, CalibrationDataReader, Qua
 import os
 import CIFAR_extract
 
+CALIBRATION_PATH = "Calibration_Data/"
+
 def main():
     # Pretrained MobileNetV2 model as the CNN basis
     mobilenet_v2 = models.mobilenet_v2(pretrained=True)
@@ -90,8 +92,7 @@ def main():
                 self.enum_data_dicts = iter([{'input': nhwc_data} for nhwc_data in nhwc_data_list])
             return next(self.enum_data_dicts, None)
 
-    calibration_data_folder = "Calibration Data"
-    dr = MobilenetDataReader(calibration_data_folder)
+    dr = MobilenetDataReader(CALIBRATION_PATH)
 
     quantize_static('mobilenet_v2_float.onnx',
                     'mobilenet_v2_uint8.onnx',
@@ -105,8 +106,8 @@ def main():
     run_sample(session_fp32, 'egypt_cat.jpg', categories)
     run_sample(session_fp32, 'cockroach.jpg', categories)
     session_quant = OXR.InferenceSession("mobilenet_v2_uint8.onnx")
-    run_sample(session_quant, 'cat.jpg', categories)
-    run_sample(session_fp32, 'cockroach.jpg', categories)
+    run_sample(session_quant, 'egypt_cat.jpg', categories)
+    run_sample(session_quant, 'cockroach.jpg', categories)
     
 if __name__ == "__main__":
     main()
