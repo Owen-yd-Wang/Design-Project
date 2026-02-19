@@ -92,3 +92,12 @@ sim_tiny_layer01_tb:
     - pointwise_conv1x1_engine.sv
     - tb_tiny_layer0_to_layer1.sv
   top: tb_tiny_layer0_to_layer1
+
+# 32x32 Model: 10-Layer Pipeline (Layers 0-9)
+sim_tiny_10layers_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_tiny_10layers_simple.sv
+  top: tb_tiny_10layers_simple

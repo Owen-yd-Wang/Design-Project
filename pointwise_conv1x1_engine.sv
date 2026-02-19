@@ -220,32 +220,32 @@ module pointwise_conv1x1_engine #(
     // synthesis translate_off
     
     // Monitor configuration
-    always_ff @(posedge clock) begin
-        if (!reset && start_conv) begin
-            $display("\n=== Pointwise Conv 1×1 Computation ===");
-            $display("Input Channels:  %0d", num_input_channels);
-            $display("Output Channels: %0d", num_output_channels);
-            $display("Parallel MACs:   %0d", NUM_MACS);
-            if (num_input_channels > NUM_MACS) begin
-                $display("Note: Will require %0d cycles per output channel", 
-                         (num_input_channels + NUM_MACS - 1) / NUM_MACS);
-            end
-        end
+    // always_ff @(posedge clock) begin
+    //     if (!reset && start_conv) begin
+    //         $display("\n=== Pointwise Conv 1×1 Computation ===");
+    //         $display("Input Channels:  %0d", num_input_channels);
+    //         $display("Output Channels: %0d", num_output_channels);
+    //         $display("Parallel MACs:   %0d", NUM_MACS);
+    //         if (num_input_channels > NUM_MACS) begin
+    //             $display("Note: Will require %0d cycles per output channel", 
+    //                      (num_input_channels + NUM_MACS - 1) / NUM_MACS);
+    //         end
+    //     end
         
-        if (!reset && result_valid) begin
-            $display("Output Channel Result: %0d", $signed(conv_result));
-            $display("======================================\n");
-        end
-    end
+    //     if (!reset && result_valid) begin
+    //         $display("Output Channel Result: %0d", $signed(conv_result));
+    //         $display("======================================\n");
+    //     end
+    // end
     
-    // Check for overflow
-    always_ff @(posedge clock) begin
-        if (!reset && result_valid) begin
-            if (conv_result > 32'h7FFF_FFFF) begin
-                $display("INFO: Large pointwise result detected: %0d", $signed(conv_result));
-            end
-        end
-    end
+    // // Check for overflow
+    // always_ff @(posedge clock) begin
+    //     if (!reset && result_valid) begin
+    //         if (conv_result > 32'h7FFF_FFFF) begin
+    //             $display("INFO: Large pointwise result detected: %0d", $signed(conv_result));
+    //         end
+    //     end
+    // end
     
     // synthesis translate_on
 

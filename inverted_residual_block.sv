@@ -310,34 +310,34 @@ module inverted_residual_block #(
     
     // synthesis translate_off
     
-    always_ff @(posedge clock) begin
-        if (!reset && start_block) begin
-            $display("\n[INVERTED_RESIDUAL_BLOCK] Starting block processing");
-            $display("  Input channels: %0d", input_channels);
-            $display("  Expand channels: %0d", expand_channels);
-            $display("  Output channels: %0d", output_channels);
-            $display("  Use residual: %0d", use_residual);
-        end
+    // always_ff @(posedge clock) begin
+    //     if (!reset && start_block) begin
+    //         $display("\n[INVERTED_RESIDUAL_BLOCK] Starting block processing");
+    //         $display("  Input channels: %0d", input_channels);
+    //         $display("  Expand channels: %0d", expand_channels);
+    //         $display("  Output channels: %0d", output_channels);
+    //         $display("  Use residual: %0d", use_residual);
+    //     end
         
-        if (!reset) begin
-            case (current_state)
-                EXPAND: if (expand_valid)
-                    $display("  [EXPAND] Complete, result: %0d → activated: %0d", 
-                             expand_result, expand_activated);
-                DEPTHWISE: if (dw_valid)
-                    $display("  [DEPTHWISE] Complete, result: %0d → activated: %0d", 
-                             dw_result, dw_activated);
-                PROJECT: if (project_valid)
-                    $display("  [PROJECT] Complete, result: %0d", project_result[7:0]);
-                SKIP_ADD:
-                    $display("  [SKIP] Adding residual: %0d + %0d = %0d", 
-                             project_result[7:0], residual_input, skip_sum);
-                DONE:
-                    $display("  [DONE] Output: %0d\n", output_activation);
-                default: ;
-            endcase
-        end
-    end
+    //     if (!reset) begin
+    //         case (current_state)
+    //             EXPAND: if (expand_valid)
+    //                 $display("  [EXPAND] Complete, result: %0d → activated: %0d", 
+    //                          expand_result, expand_activated);
+    //             DEPTHWISE: if (dw_valid)
+    //                 $display("  [DEPTHWISE] Complete, result: %0d → activated: %0d", 
+    //                          dw_result, dw_activated);
+    //             PROJECT: if (project_valid)
+    //                 $display("  [PROJECT] Complete, result: %0d", project_result[7:0]);
+    //             SKIP_ADD:
+    //                 $display("  [SKIP] Adding residual: %0d + %0d = %0d", 
+    //                          project_result[7:0], residual_input, skip_sum);
+    //             DONE:
+    //                 $display("  [DONE] Output: %0d\n", output_activation);
+    //             default: ;
+    //         endcase
+    //     end
+    // end
     
     // synthesis translate_on
 
