@@ -4,3 +4,8 @@ data/
 *.pth
 *.onnx
 *.onnx.data
+
+# Allow model files in tiny-cnn-basys3/
+!tiny-cnn-basys3/*.pth
+!tiny-cnn-basys3/*.onnx
+!tiny-cnn-basys3/*.onnx.data
