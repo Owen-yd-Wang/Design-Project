@@ -12,7 +12,7 @@ if img.mode != 'RGB':
     img = img.convert('RGB')
 
 # Resize to 224x224
-img = img.resize((224, 224), Image.Resampling.LANCZOS)
+img = img.resize((32, 32), Image.Resampling.LANCZOS)
 print(f"Resized to: {img.size}")
 
 # Convert to numpy
@@ -22,12 +22,12 @@ print(f"Array shape: {img_array.shape}")
 # Save as .mem file (HWC order, one byte per line in hex)
 print("\nGenerating test_image.mem...")
 with open('test_image.mem', 'w') as f:
-    for h in range(224):
-        for w in range(224):
+    for h in range(32):
+        for w in range(32):
             for c in range(3):
                 f.write(f"{img_array[h, w, c]:02x}\n")
 
-print(f"Wrote {224*224*3} bytes to test_image.mem")
+print(f"Wrote {32*32*3} bytes to test_image.mem")
 
 # Save as numpy
 np.save('test_image.npy', img_array)

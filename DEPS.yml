@@ -83,3 +83,12 @@ sim_layer0_all32_tb:
     - depthwise_conv3x3_engine.sv
     - tb_layer0_all32.sv
   top: tb_layer0_all32
+
+# Tiny 32x32 Model: Layer 0 -> Layer 1 Pipeline
+sim_tiny_layer01_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_tiny_layer0_to_layer1.sv
+  top: tb_tiny_layer0_to_layer1

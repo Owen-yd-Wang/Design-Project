@@ -172,32 +172,32 @@ module depthwise_conv3x3_engine (
     
     // synthesis translate_off
     
-    // DEBUG DISABLED - Uncomment to see overflow warnings
-    // always_ff @(posedge clock) begin
-    //     if (!reset && result_valid) begin
-    //         if (conv_result > 32'h7FFF_FFFF || conv_result < 32'h8000_0000) begin
-    //             $display("INFO: Large convolution result detected: %0d", $signed(conv_result));
-    //         end
-    //     end
-    // end
+    // Monitor for potential overflow in summation
+    always_ff @(posedge clock) begin
+        if (!reset && result_valid) begin
+            if (conv_result > 32'h7FFF_FFFF || conv_result < 32'h8000_0000) begin
+                $display("INFO: Large convolution result detected: %0d", $signed(conv_result));
+            end
+        end
+    end
     
-    // DEBUG DISABLED - Uncomment to see per-operation details
-    // always_ff @(posedge clock) begin
-    //     if (!reset && start_conv) begin
-    //         $display("\n=== Depthwise Conv 3×3 Computation ===");
-    //         $display("Window:   [%3d %3d %3d]", window_in[0], window_in[1], window_in[2]);
-    //         $display("          [%3d %3d %3d]", window_in[3], window_in[4], window_in[5]);
-    //         $display("          [%3d %3d %3d]", window_in[6], window_in[7], window_in[8]);
-    //         $display("Kernel:   [%3d %3d %3d]", kernel_weights[0], kernel_weights[1], kernel_weights[2]);
-    //         $display("          [%3d %3d %3d]", kernel_weights[3], kernel_weights[4], kernel_weights[5]);
-    //         $display("          [%3d %3d %3d]", kernel_weights[6], kernel_weights[7], kernel_weights[8]);
-    //     end
-    //     
-    //     if (!reset && result_valid) begin
-    //         $display("Result: %0d", $signed(conv_result));
-    //         $display("======================================\n");
-    //     end
-    // end
+    // Display computation when enabled
+    always_ff @(posedge clock) begin
+        if (!reset && start_conv) begin
+            $display("\n=== Depthwise Conv 3×3 Computation ===");
+            $display("Window:   [%3d %3d %3d]", window_in[0], window_in[1], window_in[2]);
+            $display("          [%3d %3d %3d]", window_in[3], window_in[4], window_in[5]);
+            $display("          [%3d %3d %3d]", window_in[6], window_in[7], window_in[8]);
+            $display("Kernel:   [%3d %3d %3d]", kernel_weights[0], kernel_weights[1], kernel_weights[2]);
+            $display("          [%3d %3d %3d]", kernel_weights[3], kernel_weights[4], kernel_weights[5]);
+            $display("          [%3d %3d %3d]", kernel_weights[6], kernel_weights[7], kernel_weights[8]);
+        end
+        
+        if (!reset && result_valid) begin
+            $display("Result: %0d", $signed(conv_result));
+            $display("======================================\n");
+        end
+    end
     
     // synthesis translate_on
 

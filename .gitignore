@@ -5,3 +5,15 @@
 /simulation_results
 /mems_int8
 /__pycache__
+/tiny_mems_int8
+
+
+data/
+*.pth
+*.onnx
+*.onnx.data
+
+# Allow model files in tiny-cnn-basys3/
+!tiny-cnn-basys3/*.pth
+!tiny-cnn-basys3/*.onnx
+!tiny-cnn-basys3/*.onnx.data

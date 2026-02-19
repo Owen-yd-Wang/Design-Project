@@ -57,8 +57,8 @@ def write_memh(path: Path, words: np.ndarray, word_bytes: int) -> None:
 
 def main():
     ap = argparse.ArgumentParser(description="Extract ONNX initializers to Verilog .mem files ($readmemh).")
-    ap.add_argument("--onnx", default="mobilenet_v2_uint8.onnx", help="Path to ONNX model")
-    ap.add_argument("--out", default="onnx_mems", help="Output directory for .mem files")
+    ap.add_argument("--onnx", default="tiny-cnn-basys3\tiny_cnn_cifar10.onnx", help="Path to ONNX model")
+    ap.add_argument("--out", default="tiny_onnx_mems", help="Output directory for .mem files")
     ap.add_argument("--word-bytes", type=int, default=1, choices=[1,2,4,8],
                     help="Bytes per line in .mem (1 for int8/uint8 weights; 4 for float32/int32, etc.)")
     ap.add_argument("--only-int8-weights", action="store_true",
