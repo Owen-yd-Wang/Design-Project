@@ -1,0 +1,5 @@
+test,expected_value
+conv1_f0_px5x5,466870
+conv1_f0_px0x0,118476
+conv2_f0_px4x4,2576776
+fc2_n0,1255461

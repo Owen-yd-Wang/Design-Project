@@ -1,0 +1,39 @@
+TEST START
+VCD info: dumpfile dumpfile.fst opened for output.
+VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
+
+=== Test 1: Basic MAC Operation (Simple Dot Product) ===
+LOG: 65 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 50 actual_value: 50
+
+=== Test 2: Accumulation (Multiple MACs) ===
+LOG: 115 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 44 actual_value: 44
+
+=== Test 3: 3x3 Convolution Dot Product (Realistic CNN Example) ===
+LOG: 225 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 25 actual_value: 25
+
+=== Test 4: Clear During Accumulation ===
+LOG: 275 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 0 actual_value: 0
+
+=== Test 5: Enable Control (Hold) ===
+LOG: 315 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 60 actual_value: 60
+
+=== Test 6: Maximum Value Test ===
+LOG: 345 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 65025 actual_value: 65025
+
+=== Test 7: Large Accumulation (320 MACs - typical pointwise conv) ===
+LOG: 3565 : INFO : tb_mac_uint8_int32 : dut.acc_out : expected_value: 1600000 actual_value: 1600000
+
+=== Test 8: Reset Functionality ===
+LOG: 3595 : ERROR : tb_mac_uint8_int32 : dut.acc_out : expected_value: 0 actual_value: 1605000
+
+========================================
+        TEST SUMMARY
+========================================
+Tests Passed: 7
+Tests Failed: 1
+========================================
+
+ERROR
+ERROR: tb_mac_uint8_int32.sv:320: TEST FAILED - 1 test(s) failed
+       Time: 3595  Scope: tb_mac_uint8_int32
+tb_mac_uint8_int32.sv:323: $finish called at 3595 (1s)
