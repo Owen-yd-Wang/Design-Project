@@ -34,3 +34,52 @@ sim_inverted_residual_tb:
     - inverted_residual_block.sv
     - tb_inverted_residual_block.sv
   top: tb_inverted_residual_block
+
+# Weight Memory Testbench - Load and use weights from .mem files
+sim_weight_memory_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - weight_memory.sv
+    - tb_weight_memory.sv
+  top: tb_weight_memory
+
+# Real Layer Processing - Load and process actual MobileNetV2 layer
+sim_real_layer_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_real_layer_processing.sv
+  top: tb_real_layer_processing
+
+# Real Weights Demo - Process with actual weight values embedded
+sim_real_weights_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_layer_with_weights.sv
+  top: tb_layer_with_weights
+
+# Layer 0 Inference - Process egypt_cat.jpg through first layer
+sim_layer0_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - tb_layer0_inference.sv
+  top: tb_layer0_inference
+
+# Layer 0 with Embedded Data - Works without file access
+sim_layer0_embedded_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - tb_layer0_embedded.sv
+  top: tb_layer0_embedded
+
+# Layer 0 ALL 32 Channels - Complete Layer 0 with egypt_cat.jpg
+sim_layer0_all32_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - tb_layer0_all32.sv
+  top: tb_layer0_all32
