@@ -1,0 +1,5 @@
+status,test,rtl_value,python_value
+PASS,conv1_f0_px5x5,466870,466870
+PASS,conv1_f0_px0x0,118476,118476
+PASS,conv2_f0_px4x4,2576776,2576776
+PASS,fc2_n0,1255461,1255461
