@@ -101,3 +101,14 @@ sim_tiny_10layers_tb:
     - pointwise_conv1x1_engine.sv
     - tb_tiny_10layers_simple.sv
   top: tb_tiny_10layers_simple
+
+# Complete TinyCNN Inference - Full classification pipeline
+sim_complete_inference_tb:
+  deps:
+    - mac_uint8_int32.sv
+    - depthwise_conv3x3_engine.sv
+    - pointwise_conv1x1_engine.sv
+    - tb_complete_inference.sv
+  top: tb_complete_inference
+
+

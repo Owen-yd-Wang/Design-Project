@@ -165,7 +165,7 @@ module pointwise_conv1x1_engine #(
     
     // MAC counter (tracks how many input channels processed)
     always_ff @(posedge clock) begin
-        if (reset || clear || (current_state == IDLE)) begin
+        if (reset || clear) begin
             mac_count <= 10'b0;
         end else if (current_state == COMPUTE && load_data) begin
             if (mac_count + NUM_MACS >= num_input_channels) begin
@@ -186,7 +186,7 @@ module pointwise_conv1x1_engine #(
         if (reset || clear || (current_state == IDLE && start_conv)) begin
             accumulated_result <= 32'b0;
         end else if (current_state == COMPUTE) begin
-            accumulated_result <= partial_sum;
+            accumulated_result <= accumulated_result + partial_sum;
         end
     end
     
@@ -212,7 +212,11 @@ module pointwise_conv1x1_engine #(
             busy <= (current_state == COMPUTE);
         end
     end
-    
+
+    // always @(posedge clock) if (load_data || result_valid) begin 
+    //     $display("t=%0t load=%0b busy=%0b valid=%0b start=%0b state=%0b reset=%0b mac_count=%0d in_ch=%0d partial_sum=%0d acc=%0d", 
+    //              $time, load_data, busy, result_valid, start_conv, current_state, reset, mac_count, num_input_channels, partial_sum, accumulated_result);
+    // end
     //==========================================================================
     // Debug Assertions (Synthesis will ignore these)
     //==========================================================================

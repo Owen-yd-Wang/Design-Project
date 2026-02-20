@@ -1,0 +1,161 @@
+#==============================================================================
+# Makefile for Quantized MobileNetV2 Full Inference Testbench
+#==============================================================================
+
+# Detect simulator if not specified
+SIMULATOR ?= $(shell which vsim > /dev/null 2>&1 && echo "modelsim" || \
+             which vcs > /dev/null 2>&1 && echo "vcs" || \
+             which xmvlog > /dev/null 2>&1 && echo "xcelium" || echo "none")
+
+# Source files
+RTL_FILES := mac_uint8_int32.sv depthwise_conv3x3_engine.sv
+TB_FILE := tb_quant_mobilenet_v2_full.sv
+ALL_FILES := $(RTL_FILES) $(TB_FILE)
+
+# Data files
+DATA_FILES := test_image.mem
+WEIGHT_DIR := tiny_mems_int8
+
+# Simulator-specific settings
+ifeq ($(SIMULATOR), modelsim)
+    COMPILE_CMD := vlog -sv
+    ELABORATE_CMD := vsim work.tb_quant_mobilenet_v2_full
+    RUN_CMD := $(ELABORATE_CMD) -c -do "run -all; quit -f" -l simulation.log
+    CLEAN_CMD := rm -rf work *.log *.wdb
+    WAVES_CMD := $(ELABORATE_CMD) -do "add wave -recursive *; run -all"
+endif
+
+ifeq ($(SIMULATOR), vcs)
+    COMPILE_CMD := vcs -full64 -sv
+    RUN_CMD := ./simv | tee simulation.log
+    WAVES_CMD := ./simv -gui
+    CLEAN_CMD := rm -rf simv *.log *.vcd csrc
+endif
+
+ifeq ($(SIMULATOR), xcelium)
+    COMPILE_CMD := xmvlog -sv
+    RUN_CMD := xmsim work.tb_quant_mobilenet_v2_full -log simulation.log
+    WAVES_CMD := xmsim work.tb_quant_mobilenet_v2_full -gui
+    CLEAN_CMD := rm -rf work.lib xcelium.d *.log *.wdb
+endif
+
+#==============================================================================
+# Targets
+#==============================================================================
+
+.PHONY: all check compile sim waves clean help
+
+all: check compile sim
+
+help:
+	@echo "Quantized MobileNetV2 Full Inference Testbench Makefile"
+	@echo ""
+	@echo "Available targets:"
+	@echo "  make all       - Check files, compile, and run simulation"
+	@echo "  make check     - Check for required files and simulator"
+	@echo "  make compile   - Compile SystemVerilog files"
+	@echo "  make sim       - Run simulation"
+	@echo "  make waves     - Run simulation with waveform viewer"
+	@echo "  make clean     - Remove simulation artifacts"
+	@echo "  make help      - Display this help message"
+	@echo ""
+	@echo "Detected simulator: $(SIMULATOR)"
+	@echo ""
+	@echo "To specify a simulator manually:"
+	@echo "  make SIMULATOR=modelsim"
+	@echo "  make SIMULATOR=vcs"
+	@echo "  make SIMULATOR=xcelium"
+
+check:
+	@echo "[1] Checking files..."
+	@if [ ! -f test_image.mem ]; then \
+		echo "ERROR: test_image.mem not found"; exit 1; \
+	fi
+	@echo "    ✓ test_image.mem"
+	@if [ ! -d tiny_mems_int8 ]; then \
+		echo "ERROR: tiny_mems_int8/ directory not found"; exit 1; \
+	fi
+	@echo "    ✓ tiny_mems_int8/ directory"
+	@if [ ! -f mac_uint8_int32.sv ]; then \
+		echo "ERROR: mac_uint8_int32.sv not found"; exit 1; \
+	fi
+	@echo "    ✓ mac_uint8_int32.sv"
+	@if [ ! -f depthwise_conv3x3_engine.sv ]; then \
+		echo "ERROR: depthwise_conv3x3_engine.sv not found"; exit 1; \
+	fi
+	@echo "    ✓ depthwise_conv3x3_engine.sv"
+	@if [ ! -f tb_quant_mobilenet_v2_full.sv ]; then \
+		echo "ERROR: tb_quant_mobilenet_v2_full.sv not found"; exit 1; \
+	fi
+	@echo "    ✓ tb_quant_mobilenet_v2_full.sv"
+	@echo ""
+	@if [ "$(SIMULATOR)" = "none" ]; then \
+		echo "ERROR: No supported simulator found (ModelSim, VCS, or Xcelium)"; \
+		echo "Please install a simulator or ensure it is in your PATH"; \
+		exit 1; \
+	fi
+	@echo "[✓] All checks passed! Simulator: $(SIMULATOR)"
+
+compile: check
+	@echo ""
+	@echo "[2] Compiling with $(SIMULATOR)..."
+	@rm -rf work work.lib csrc simv
+	@$(COMPILE_CMD) $(ALL_FILES)
+	@if [ $$? -eq 0 ]; then \
+		echo "[✓] Compilation successful"; \
+	else \
+		echo "[ERROR] Compilation failed"; \
+		exit 1; \
+	fi
+
+sim: compile
+	@echo ""
+	@echo "[3] Running simulation..."
+	@echo "    (This may take several minutes...)"
+	@echo ""
+	@$(RUN_CMD)
+	@echo ""
+	@echo "[✓] Simulation complete!"
+	@echo ""
+	@if [ -f simulation.log ]; then \
+		echo "=== Classification Results ==="; \
+		grep -A 15 "CLASSIFICATION RESULTS" simulation.log || true; \
+		grep "PREDICTED CLASS" simulation.log || true; \
+	fi
+
+waves: compile
+	@echo ""
+	@echo "[3] Running simulation with waveform viewer..."
+	@$(WAVES_CMD)
+
+clean:
+	@echo "Cleaning simulation artifacts..."
+	@$(CLEAN_CMD)
+	@rm -f *.vcd *.vpd *.shm
+	@echo "[✓] Clean complete"
+
+#==============================================================================
+# Additional utilities
+#==============================================================================
+
+# Count lines of code
+loc:
+	@echo "Lines of code:"
+	@wc -l $(ALL_FILES)
+
+# List weight files
+list-weights:
+	@echo "Weight files in tiny_mems_int8/:"
+	@ls -lh tiny_mems_int8/ | grep -E "\.mem$$" | awk '{print "  " $$9 " (" $$5 ")"}'
+
+# Show test configuration
+config:
+	@echo "Test Configuration:"
+	@echo "  Input image: $(DATA_FILES)"
+	@echo "  Weight directory: $(WEIGHT_DIR)"
+	@echo "  Input size: 32×32×3"
+	@echo "  Output classes: 10"
+	@echo ""
+	@$(MAKE) list-weights
+
+.SECONDARY:
