@@ -17,3 +17,11 @@ data/
 !tiny-cnn-basys3/*.pth
 !tiny-cnn-basys3/*.onnx
 !tiny-cnn-basys3/*.onnx.data
+
+# Build artifacts
+*.vcd
+*.fst
+.DS_Store
+tb_mac
+tb_real_weights
+tb_rtl_vs_python
