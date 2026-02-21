@@ -1,0 +1,6 @@
+conv1 x_zp=-5 w_zp=0 y_zp=-128 M=0.0023394289
+conv2 x_zp=-128 w_zp=0 y_zp=-128 M=0.0042724727
+conv3 x_zp=-128 w_zp=0 y_zp=-128 M=0.0025166616
+fc1 x_zp=-128 w_zp=0 y_zp=-128 M=0.0019082877
+fc2 x_zp=-128 w_zp=0 y_zp=15 M=0.0020523081
+output scale=0.1141469926 zp=15

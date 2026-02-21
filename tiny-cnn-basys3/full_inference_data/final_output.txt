@@ -1,0 +1,12 @@
+# Final 1x10 output vector (int8 quantized)
+# class, int8_value, float_value
+0,airplane,13,-0.228294
+1,automobile,-60,-8.561025
+2,bird,33,2.054646
+3,cat,45,3.424410 <-- PREDICTED
+4,deer,18,0.342441
+5,dog,40,2.853675
+6,frog,17,0.228294
+7,horse,-13,-3.196116
+8,ship,6,-1.027323
+9,truck,-43,-6.620525
