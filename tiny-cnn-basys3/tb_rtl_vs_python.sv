@@ -72,7 +72,7 @@ module tb_rtl_vs_python;
         // Conv1: 27 data/weight pairs
         for (int i = 0; i < 27; i++) begin
             conv1_data[i]   = (i * 7 + 13) % 256;  // pseudo-random 0-255
-            conv1_weight[i] = (i * 11 + 3) % 256;
+            conv1_weight[i] = (i * 11 + 3) % 256; 
         end
         // Conv2: 144 data/weight pairs
         for (int i = 0; i < 144; i++) begin

@@ -25,3 +25,5 @@ data/
 tb_mac
 tb_real_weights
 tb_rtl_vs_python
+.claude/
+1.zip
