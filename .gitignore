@@ -27,3 +27,9 @@ tb_real_weights
 tb_rtl_vs_python
 .claude/
 1.zip
+
+# Vivado project build artifacts
+/tiny_cnn_basys3/
+
+# Scratch/debug scripts
+/1.py
