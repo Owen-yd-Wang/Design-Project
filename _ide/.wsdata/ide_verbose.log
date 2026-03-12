@@ -1,0 +1,187 @@
+2026-03-10 15:27:03 [debug] : --------------------------------------------------------------------------------- 
+2026-03-10 15:27:03 [debug] : C:\Users\ydwan\Desktop\Coding\DP 
+2026-03-10 15:27:03 [debug] : --------------------------------------------------------------------------------- 
+2026-03-10 15:27:03 [debug] : [Logger] Previous user logs are stored in the file - C:\Users\ydwan\.Xilinx\Vitis\2025.2\logs\ide.log 
+2026-03-10 15:27:03 [debug] : [Logger] Previous debug logs are stored in the file - C:\Users\ydwan\.Xilinx\Vitis\2025.2\.wsdata\ide_verbose.log 
+2026-03-10 15:27:03 [debug] : [Repository Server] Executing method:getEmbeddedExampleTemplateTree with connection:(object). {"0":"request:","1":{"wrappers_":null,"arrayIndexOffset_":-1,"array":[],"pivot_":1.7976931348623157e+308,"convertedPrimitiveFields_":{}}}
+2026-03-10 15:27:03 [debug] : [Application Examples Provider]  updating the embedded templates on workspace event. 
+2026-03-10 15:27:03 [debug] : [Application Examples Provider] refresh requested. 
+2026-03-10 15:27:03 [debug] : Received event from notification service: ON_DID_UPDATE_WORKSPACE. 
+2026-03-10 15:27:03 [debug] : [Logger Client] log levelchanged to  {"0":"Info"}
+2026-03-10 15:27:03 [debug] : [Logger UI]  Update Log Level  called 
+2026-03-10 15:27:03 [debug] : [Application Examples Provider] common calling method requested. 
+2026-03-10 15:27:03 [debug] : [Application Examples Provider] Repositories model update requested. 
+2026-03-10 15:27:03 [debug] : [Application Examples Provider] Repositories model update completed. 
+2026-03-10 15:27:03 [debug] : [ProjectCache] fetching projects for project-cache 
+2026-03-10 15:27:03 [debug] : [Application Examples Provider] Templates model update requested. 
+2026-03-10 15:27:03 [debug] : [Repository Service] Executing method:getEmbeddedExampleTemplateTree from frontend. {"0":"request:"}
+2026-03-10 15:27:03 [debug] : [Logger UI]  Update Log Level success {"0":{"success":true,"error":""}}
+2026-03-10 15:27:03 [debug] : RIGEL SERVER 15:27:03 INFO  : created .gitignore file for the project C:\Users\ydwan\Desktop\Coding\DP 
+2026-03-10 15:27:03 [debug] : RIGEL SERVER 15:27:03 INFO  : updated workspace path: C:\Users\ydwan\Desktop\Coding\DP 
+2026-03-10 15:27:03 [debug] : RIGEL SERVER 15:27:03 INFO  : cmd.exe, /C, empyro.bat repo -st   C:\AMDDesignTools\2025.2\Vitis\data\embeddedsw 
+2026-03-10 15:27:03 [debug] : Event posted using notification server in backend. {"0":{"wrappers_":{},"arrayIndexOffset_":-1,"array":["dd9407cf-bc1e-464c-ab2f-fb0e44dc7672",null,54,null,null,null,null,"refresh-summaries"],"pivot_":1.7976931348623157e+308,"convertedPrimitiveFields_":{}}}
+2026-03-10 15:27:03 [debug] : Received event from notification service: ON_DID_REFRESH_WORKSPACE_SUMMARIES. 
+2026-03-10 15:27:03 [debug] : Received event from notification service: ON_STOP_ANALYSIS_PROGRESS. 
+2026-03-10 15:27:03 [debug] : [ProjectDecorator] tree decoration updated 
+2026-03-10 15:27:03 [debug] : [ProjectCache] Project location updated to undefined 
+2026-03-10 15:27:03 [debug] : [ProjectDecorator] tree decoration updated 
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.fireDidChangeContent - enter - {
+  "changes": [
+    {
+      "range": {
+        "startLineNumber": 1,
+        "startColumn": 1,
+        "endLineNumber": 1,
+        "endColumn": 1
+      },
+      "rangeLength": 0,
+      "text": "{\r\n    \"clangd.fallbackFlags\": []\r\n}",
+      "rangeOffset": 0,
+      "forceMoveMarkers": false
+    }
+  ],
+  "eol": "\r\n",
+  "isEolChange": false,
+  "versionId": 2,
+  "isUndoing": false,
+  "isRedoing": false,
+  "isFlush": false
+} {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.markAsDirty - enter {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.cancelSync {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.markAsDirty - exit {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.fireDidChangeContent - exit {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.cancelSave {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.cancelSave {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.cancelSync {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : MonacoEditorModel.cancelSave {"0":"file:///c:/Users/ydwan/Desktop/Coding/DP/_ide/settings.json"}
+2026-03-10 15:27:03 [debug] : No label for action menu node: No command "workspace:addFolder" exists. 
+2026-03-10 15:27:04 [debug] : RIGEL SERVER 15:27:04 INFO  : [INFO]: Initializing repositories 
+2026-03-10 15:27:04 [debug] : RIGEL SERVER 15:27:04 INFO  : [INFO]: Successfully set the EmbeddedSW path, refer .repo.yaml for more details.
+15:27:04 INFO  : Successfully created repository data at C:\Users\ydwan\Desktop\Coding\DP/_ide\.wsdata 
+2026-03-10 15:27:04 [debug] : RIGEL SERVER 15:27:04 INFO  : cmd.exe, /C, empyro.bat get_template_data -d C:\Users\ydwan\AppData\Local\Temp\rigel_lopper_ydwan15739094392142153159 -r C:\Users\ydwan\Desktop\Coding\DP\_ide\.wsdata\.repo.yaml 
+2026-03-10 15:27:05 [debug] : RIGEL SERVER 15:27:05 INFO  : Embedded Template List generated successfully 
+2026-03-10 15:27:05 [debug] : [Application Examples Provider] Templates model update completed. 
+2026-03-10 15:27:05 [debug] : [Application Examples Provider] common calling method completed. 
+2026-03-10 15:27:05 [debug] : [Application Examples Provider] refresh completed. 
+2026-03-10 15:27:30 [debug] : PLUGIN_HOST(102208): PluginManagerExtImpl/loadPlugin(C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\plugins\vscode-clangd\extension\out\bundle) 
+2026-03-10 15:27:31 [debug] : Clang Language Server is now active! 
+2026-03-10 15:27:31 [debug] : Calling activation function on plugin clangd 
+2026-03-10 15:51:01 [debug] : start navigation 1 
+2026-03-10 15:51:01 [debug] : start navigation 2 
+2026-03-10 15:51:01 [debug] : end navigation 1 
+2026-03-10 15:51:01 [debug] : end navigation 0 
+2026-03-10 15:51:01 [debug] : ending navigation with location {"uri":"file:///c%3A/Users/ydwan/Desktop/Coding/DP/depthwise_conv3_3_engine.sv","type":1,"context":{"start":{"line":0,"character":0},"end":{"line":0,"character":0}}} 
+2026-03-10 21:15:15 [debug] : socket closed 
+2026-03-10 21:15:15 [debug] : closing connection for 1 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/localization-server'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/os'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/commands'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/logger'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/messageService'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/rigel-utils'. 
+2026-03-10 21:15:15 [debug] : [Rigel Utils Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/ChannelCloseService'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/remote-filesystem'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/envs'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/startup-workspace'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/rigel-workspace'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/workspace'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/keyboard'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/stopwatch'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/application'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/i18n'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/quickInput'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/project'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/component'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/feature-registry'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/debugger'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/debug'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/shell-terminal'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/quickPick'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/task'. 
+2026-03-10 21:15:15 [debug] : a client has disconnected - removed from list: 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/search'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hostedPlugin'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/plugin-ext'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/plugin-paths'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/vsx-environment'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/request-service'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/cli-preferences'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/server'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/repository'. 
+2026-03-10 21:15:15 [debug] : [Repository Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/program_flash'. 
+2026-03-10 21:15:15 [debug] : [Program Flash Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/build'. 
+2026-03-10 21:15:15 [debug] : [Build Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/notification'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path 'services/rigel-backend-helper'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/aie'. 
+2026-03-10 21:15:15 [debug] : [AIE Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/analysis'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/recent-summaries'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/rigel_explorer'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/linker-script'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/rigel-logger'. 
+2026-03-10 21:15:15 [debug] : [Logger Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/platform'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/vitis-hls'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/device'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/mini-browser-service'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/flow_navigator'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/common/data/info'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/common/file/service'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/report'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/dataflow/info'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/l1library/service'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/directive'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls_flow'. 
+2026-03-10 21:15:15 [debug] : [Hls Flow Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/search-in-workspace'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/open-ai/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/mcpservermanager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/languageModelRegistryDelegatePath'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/languageModelDelegatePath'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/rigel-ai/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/anthropic/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/google/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/huggingface/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/llamafilemanager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/ollama/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/vercel-ai/language-model-manager'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/config-file'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/elf-reader'. 
+2026-03-10 21:15:15 [debug] : [Elf Reader Server] Disposing objects in backend. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/project-utils'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/bootgen'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/cdo-utils'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/report-model'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls/wave/open'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/scanoss/service'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/hls-config'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/keyStore'. 
+2026-03-10 21:15:15 [debug] : Closing channel on service path '/services/languagePackService'. 
+2026-03-10 21:15:15 [debug] : Uncaught Exception:  {"0":"Error: spawn wmic.exe ENOENT"}
+2026-03-10 21:15:15 [debug] : Error: spawn wmic.exe ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:286:19)
+    at onErrorNT (node:internal/child_process:484:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) 
+2026-03-10 21:15:15 [debug] : Uncaught Exception:  {"0":"TypeError: Cannot read properties of undefined (reading 'forEach')"}
+2026-03-10 21:15:15 [debug] : TypeError: Cannot read properties of undefined (reading 'forEach')
+    at Stream.<anonymous> (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:4071231)
+    at Stream.emit (node:events:519:28)
+    at Stream.s (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:1543096)
+    at Stream.emit (node:events:531:35)
+    at I (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:4299347)
+    at i.write (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:4299702)
+    at Stream.ondata (node:internal/streams/legacy:21:31)
+    at Stream.emit (node:events:519:28)
+    at p (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:5693470)
+    at u.queue.u.push (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:5693687)
+    at u (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:2128932)
+    at Stream.<anonymous> (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:2129191)
+    at u.end (C:\AMDDesignTools\2025.2\Vitis\ide\electron-app\win64\resources\app\lib\backend\384.js:2:5693884)
+    at Socket.onend (node:internal/streams/readable:946:10)
+    at Object.onceWrapper (node:events:633:28)
+    at Socket.emit (node:events:531:35) 

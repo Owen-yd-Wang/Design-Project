@@ -1,0 +1,12 @@
+15:27:03 INFO  : updated workspace path: C:\Users\ydwan\Desktop\Coding\DP
+15:27:03 INFO  : cmd.exe, /C, empyro.bat repo -st   C:\AMDDesignTools\2025.2\Vitis\data\embeddedsw
+15:27:04 INFO  : [INFO]: Initializing repositories
+15:27:04 INFO  : [INFO]: Successfully set the EmbeddedSW path, refer .repo.yaml for more details.
+15:27:04 INFO  : Successfully created repository data at C:\Users\ydwan\Desktop\Coding\DP/_ide\.wsdata
+15:27:04 INFO  : cmd.exe, /C, empyro.bat get_template_data -d C:\Users\ydwan\AppData\Local\Temp\rigel_lopper_ydwan15739094392142153159 -r C:\Users\ydwan\Desktop\Coding\DP\_ide\.wsdata\.repo.yaml
+15:27:05 INFO  : Embedded Template List generated successfully
+21:15:15 INFO  : connection terminated
+21:15:15 INFO  : connection terminated
+21:15:15 INFO  : scheduling shutdown timer for 2 seconds ...
+21:15:18 INFO  : Terminating Vitis C++ Server
+21:15:18 INFO  : Vitis C++ Server terminated

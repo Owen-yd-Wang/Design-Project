@@ -103,6 +103,12 @@ module mac_uint8_int32 (
             end
         end
     end
+    // always_ff @(posedge clock) begin
+    //     if (!reset && enable && !clear_acc) begin
+    //         $display("MAC dbg: data=%0d weight=%0d product=%0d acc(before)=%0d acc(after)=%0d",
+    //             data_in, weight_in, (data_in*weight_in), accumulator, next_accumulator);
+    //     end
+    // end
     
     // synthesis translate_on
 

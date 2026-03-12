@@ -53,14 +53,14 @@ module tb_complete_inference;
     logic [7:0] fc2_weights [0:639];           // 10*64
     
     // Engines
-    depthwise_conv3x3_engine dw_engine (
+    depthwise_conv3_3_engine dw_engine (
         .clock(clock), .reset(reset),
         .window_in(dw_window), .kernel_weights(dw_kernel),
         .start_conv(dw_start), .clear(dw_clear),
         .conv_result(dw_result), .result_valid(dw_valid)
     );
     
-    pointwise_conv1x1_engine #(.NUM_MACS(NUM_MACS)) pw_engine (
+    pointwise_conv1_1_engine #(.NUM_MACS(NUM_MACS)) pw_engine (
         .clock(clock), .reset(reset),
         .num_input_channels(pw_in_ch), .num_output_channels(pw_out_ch),
         .activations(pw_act), .weights(pw_wt),
@@ -76,9 +76,16 @@ module tb_complete_inference;
     
     // ReLU function
     function automatic logic [7:0] relu(int val);
-        if (val < 0) return 8'd0;
-        if (val > 255) return 8'd255;
-        return val[7:0];
+        logic signed [31:0] shifted;
+        // Take MSB 8 bits (equivalent to >> 12)
+        shifted = val >>> 12;
+        // Clamp to 255
+        if (shifted <= 0)
+            return 8'd0;
+        else if (shifted > 255)
+            return 8'd255;
+        else
+            return shifted[7:0];
     endfunction
     
     // Max pool 2*2
@@ -134,6 +141,7 @@ module tb_complete_inference;
         int h, w, c, kh, kw, och, ich, acc, wt_idx, i;
         int max_idx, max_val, batch, ch_idx, flat_idx;
         int flat_c,flat_h,flat_w;
+        int ih, iw;
         
         reset = 1;
         dw_start = 0; dw_clear = 0;
@@ -159,27 +167,30 @@ module tb_complete_inference;
                         // Extract 3*3 window with padding
                         for (kh=0; kh<3; kh++) begin
                             for (kw=0; kw<3; kw++) begin
-                                static int ih = h+kh-1;
-                                static int iw = w+kw-1;
-                                if (ih<0 || ih>=32 || iw<0 || iw>=32)
+                                ih = h+kh-1;
+                                iw = w+kw-1;
+                                if (ih<0 || ih>=32 || iw<0 || iw>=32) begin
                                     dw_window[kh*3+kw] = 8'h00;
-                                else
+                                end else begin
                                     dw_window[kh*3+kw] = input_image[ih][iw][ich];
+                                end
                             end
                         end
                         
                         // Get kernel weights
                         wt_idx = och*27 + ich*9;  // 27 weights per output channel
-                        for (i=0; i<9; i++) dw_kernel[i] = conv1_weights[wt_idx+i];
-                        
+                        for (i=0; i<9; i++) begin 
+                            dw_kernel[i] = conv1_weights[wt_idx+i];
+                        end
                         // Compute
                         dw_clear=1; @(posedge clock); dw_clear=0;
                         dw_start=1; @(posedge clock); dw_start=0;
-                        wait(dw_valid); @(posedge clock);
+                        wait(dw_valid);
                         acc += $signed(dw_result);
+                        // $display("result: %0d", acc);
                     end
-                    
                     fm_conv1[h][w][och] = relu(acc);
+                    // $display("w=%0d c=%0d val=%0d", w, c, fm_conv1[h][w][och]);
                 end
             end
             if (h%8==7) $display("  Processed row %0d/32", h+1);
@@ -200,6 +211,7 @@ module tb_complete_inference;
                         fm_conv1[h*2+1][w*2][c],
                         fm_conv1[h*2+1][w*2+1][c]
                     );
+                    // $display("conv=%0d", fm_pool1[h][w][c]);
                 end
             end
         end
@@ -209,7 +221,7 @@ module tb_complete_inference;
         // Layer 3: Conv2 (16*16*16 → 16*16*32)
         //======================================================================
         $display("[3/7] Conv2: 16*16*16 -> 16*16*32 (3*3, pad=1)");
-        
+        reset=1;@(posedge clock);reset=0;
         for (h=0; h<16; h++) begin
             for (w=0; w<16; w++) begin
                 for (och=0; och<32; och++) begin
@@ -218,8 +230,8 @@ module tb_complete_inference;
                     for (ich=0; ich<16; ich++) begin
                         for (kh=0; kh<3; kh++) begin
                             for (kw=0; kw<3; kw++) begin
-                                static int ih = h+kh-1;
-                                static int iw = w+kw-1;
+                                ih = h+kh-1;
+                                iw = w+kw-1;
                                 if (ih<0 || ih>=16 || iw<0 || iw>=16)
                                     dw_window[kh*3+kw] = 8'h00;
                                 else
@@ -232,7 +244,7 @@ module tb_complete_inference;
                         
                         dw_clear=1; @(posedge clock); dw_clear=0;
                         dw_start=1; @(posedge clock); dw_start=0;
-                        wait(dw_valid); @(posedge clock);
+                        wait(dw_valid); 
                         acc += $signed(dw_result);
                     end
                     
@@ -257,6 +269,7 @@ module tb_complete_inference;
                         fm_conv2[h*2+1][w*2][c],
                         fm_conv2[h*2+1][w*2+1][c]
                     );
+                    $display("fm conv2 = %0d", fm_pool2[h][w][c]);
                 end
             end
         end
@@ -275,8 +288,8 @@ module tb_complete_inference;
                     for (ich=0; ich<32; ich++) begin
                         for (kh=0; kh<3; kh++) begin
                             for (kw=0; kw<3; kw++) begin
-                                static int ih = h+kh-1;
-                                static int iw = w+kw-1;
+                                ih = h+kh-1;
+                                iw = w+kw-1;
                                 if (ih<0 || ih>=8 || iw<0 || iw>=8)
                                     dw_window[kh*3+kw] = 8'h00;
                                 else
@@ -289,7 +302,7 @@ module tb_complete_inference;
                         
                         dw_clear=1; @(posedge clock); dw_clear=0;
                         dw_start=1; @(posedge clock); dw_start=0;
-                        wait(dw_valid); @(posedge clock);
+                        wait(dw_valid); 
                         acc += $signed(dw_result);
                     end
                     
@@ -313,7 +326,7 @@ module tb_complete_inference;
                         fm_conv3[h*2+1][w*2][c],
                         fm_conv3[h*2+1][w*2+1][c]
                     );
-                    $display("w=%0d c=%0d val=%0d", w, c, fm_pool3[h][w][c]);
+                    $display("fm conv3 = %0d", fm_pool3[h][w][c]);
                 end
             end
         end

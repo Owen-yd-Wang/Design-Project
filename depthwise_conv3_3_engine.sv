@@ -21,7 +21,7 @@
 // Author: Cognichip Co-Design Team
 //==============================================================================
 
-module depthwise_conv3x3_engine (
+module depthwise_conv3_3_engine (
     input  logic        clock,
     input  logic        reset,         // Active high reset
     

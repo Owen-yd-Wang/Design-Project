@@ -21,7 +21,7 @@
 // Author: Cognichip Co-Design Team
 //==============================================================================
 
-module pointwise_conv1x1_engine #(
+module pointwise_conv1_1_engine #(
     parameter int NUM_MACS = 16,              // Number of parallel MAC units
     parameter int MAX_INPUT_CHANNELS = 320,   // Max input channels (MobileNetV2: up to 320)
     parameter int MAX_OUTPUT_CHANNELS = 320   // Max output channels
